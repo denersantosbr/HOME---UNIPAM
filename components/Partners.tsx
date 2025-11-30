@@ -1,6 +1,6 @@
 import React from 'react';
 
-// Componente esvaziado intencionalmente para remover a seção de logos do site.
+// Componente vazio para manter a estrutura do projeto sem exibir os logos
 export const Partners: React.FC = () => {
   return null;
 };

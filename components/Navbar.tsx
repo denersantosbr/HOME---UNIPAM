@@ -15,9 +15,11 @@ export const Navbar: React.FC = () => {
 
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 20);
+      requestAnimationFrame(() => {
+          setIsScrolled(window.scrollY > 20);
+      });
     };
-    window.addEventListener('scroll', handleScroll);
+    window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
@@ -39,34 +41,40 @@ export const Navbar: React.FC = () => {
 
   return (
     <nav
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled ? 'glass py-2 shadow-sm' : 'bg-transparent py-4'
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 will-change-transform ${
+        isScrolled ? 'glass py-2 shadow-sm' : 'bg-white/95 md:bg-transparent py-2 md:py-4'
       }`}
     >
       <div className="container mx-auto px-4 md:px-8 flex justify-between items-center">
-        {/* Logo */}
+        {/* Logo Section */}
         <div className="flex items-center gap-2">
-           <a href="#home" onClick={(e) => handleScrollTo(e, '#home')} className="flex items-center gap-2 font-bold text-2xl text-brand-blue tracking-tight">
+           <a 
+             href="#home" 
+             onClick={(e) => handleScrollTo(e, '#home')} 
+             className="block relative"
+             aria-label="Ir para o topo"
+           >
              <img 
-               src="https://lh3.googleusercontent.com/d/1L1TObqXm_SSDzvr-5d3ljRtT0WsqN9r_" 
-               alt="Unipam Logo" 
-               className="h-40 w-auto object-contain"
-               onError={(e) => {
-                 (e.target as HTMLImageElement).style.display = 'none';
-                 (e.target as HTMLImageElement).parentElement!.innerText = "UNIPAM";
-               }}
+               src="https://lh3.googleusercontent.com/d/1L1TObqXm_SSDzvr-5d3ljRtT0WsqN9r_=w500-rw" 
+               alt="Unipam Logo"
+               width="300"
+               height="120"
+               // FIX: h-12 (48px) on mobile prevents overlap. md:h-28 (112px) on desktop.
+               className="h-12 md:h-28 w-auto object-contain transition-all"
+               // @ts-ignore
+               fetchPriority="high"
              />
            </a>
         </div>
 
-        {/* Desktop Nav */}
+        {/* Desktop Navigation */}
         <div className="hidden md:flex items-center gap-8">
           {navLinks.map((link) => (
             <a
               key={link.name}
               href={link.href}
               onClick={(e) => handleScrollTo(e, link.href)}
-              className="text-slate-600 hover:text-brand-blue font-medium transition-colors"
+              className="text-slate-600 hover:text-brand-blue font-medium transition-colors text-lg"
             >
               {link.name}
             </a>
@@ -77,38 +85,39 @@ export const Navbar: React.FC = () => {
             rel="noopener noreferrer"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
-            className="bg-brand-blue text-white px-6 py-2.5 rounded-full font-semibold shadow-lg shadow-blue-500/30 hover:shadow-blue-500/50 flex items-center gap-2 transition-all"
+            className="bg-brand-blue text-white px-6 py-3 rounded-full font-semibold shadow-lg shadow-blue-500/30 hover:shadow-blue-500/50 flex items-center gap-2 transition-all min-w-[48px] min-h-[48px]"
           >
             <WhatsAppIcon className="w-5 h-5 text-white fill-white" />
             Fale no WhatsApp
           </motion.a>
         </div>
 
-        {/* Mobile Toggle */}
+        {/* Mobile Toggle Button */}
         <button
-          className="md:hidden text-slate-700"
+          className="md:hidden text-slate-700 p-2 min-w-[48px] min-h-[48px] flex items-center justify-center rounded-lg active:bg-slate-100"
           onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+          aria-label="Abrir menu"
         >
-          {mobileMenuOpen ? <X size={28} /> : <Menu size={28} />}
+          {mobileMenuOpen ? <X size={32} /> : <Menu size={32} />}
         </button>
       </div>
 
-      {/* Mobile Menu */}
+      {/* Mobile Menu Dropdown */}
       <AnimatePresence>
         {mobileMenuOpen && (
           <motion.div
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
-            className="md:hidden glass border-t border-slate-200 overflow-hidden"
+            className="md:hidden bg-white border-t border-slate-200 overflow-hidden absolute top-full left-0 right-0 shadow-xl"
           >
-            <div className="flex flex-col p-6 gap-4">
+            <div className="flex flex-col p-6 gap-6">
               {navLinks.map((link) => (
                 <a
                   key={link.name}
                   href={link.href}
                   onClick={(e) => handleScrollTo(e, link.href)}
-                  className="text-lg font-medium text-slate-700 hover:text-brand-blue"
+                  className="text-xl font-medium text-slate-800 py-3 border-b border-slate-100"
                 >
                   {link.name}
                 </a>
@@ -117,9 +126,9 @@ export const Navbar: React.FC = () => {
                 href="https://wa.me/554198919062"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="bg-brand-blue text-white w-full py-3 rounded-xl font-bold text-center shadow-md flex justify-center items-center gap-2"
+                className="bg-brand-blue text-white w-full py-4 rounded-xl font-bold text-lg text-center shadow-md flex justify-center items-center gap-2 mt-2"
               >
-                <WhatsAppIcon className="w-5 h-5 text-white" />
+                <WhatsAppIcon className="w-6 h-6 text-white" />
                 Fale no WhatsApp
               </a>
             </div>

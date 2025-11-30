@@ -65,78 +65,83 @@ Enviado via site Unipam.
   };
 
   return (
-    <section className="py-20 bg-gradient-to-t from-slate-100 to-white" id="quote">
+    <section className="py-16 md:py-24 bg-gradient-to-t from-slate-100 to-white" id="quote">
       <div className="container mx-auto px-4 md:px-8">
-        <div className="max-w-3xl mx-auto glass-card rounded-2xl p-8 md:p-10 shadow-xl border border-white/50">
+        <div className="max-w-3xl mx-auto glass-card rounded-2xl p-6 md:p-10 shadow-xl border border-white/50">
           
           <div className="text-center mb-8">
             <div className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-blue-100 text-brand-blue mb-4">
               <Mail size={24} />
             </div>
             <h2 className="text-2xl md:text-3xl font-bold text-slate-800">Solicitar Cotação</h2>
-            <p className="text-slate-500 mt-2">Preencha os dados abaixo e receba uma proposta personalizada.</p>
+            <p className="text-slate-500 mt-2">Preencha os dados abaixo e receba uma proposta.</p>
           </div>
 
           <form onSubmit={handleSubmit} className="grid md:grid-cols-2 gap-5">
+            {/* Input Class Note: 'text-base' is crucial for iOS to prevent auto-zoom on focus */}
+            
             <div className="col-span-2 md:col-span-1">
-              <label className="block text-sm font-medium text-slate-700 mb-1">Nome Completo</label>
+              <label className="block text-sm font-medium text-slate-700 mb-1.5">Nome Completo</label>
               <input 
                 required 
                 type="text" 
                 name="name" 
                 value={formData.name} 
                 onChange={handleChange}
-                className="w-full px-4 py-2.5 rounded-lg border border-slate-300 focus:border-brand-blue focus:ring-2 focus:ring-blue-100 outline-none transition-all bg-white/50"
+                className="w-full px-4 py-3 rounded-xl border border-slate-300 focus:border-brand-blue focus:ring-2 focus:ring-blue-100 outline-none transition-all bg-white/80 text-base"
                 placeholder="Seu nome"
               />
             </div>
             
             <div className="col-span-2 md:col-span-1">
-              <label className="block text-sm font-medium text-slate-700 mb-1">E-mail</label>
+              <label className="block text-sm font-medium text-slate-700 mb-1.5">E-mail</label>
               <input 
                 required 
                 type="email" 
                 name="email" 
                 value={formData.email} 
                 onChange={handleChange}
-                className="w-full px-4 py-2.5 rounded-lg border border-slate-300 focus:border-brand-blue focus:ring-2 focus:ring-blue-100 outline-none transition-all bg-white/50"
+                className="w-full px-4 py-3 rounded-xl border border-slate-300 focus:border-brand-blue focus:ring-2 focus:ring-blue-100 outline-none transition-all bg-white/80 text-base"
                 placeholder="seu@email.com"
+                inputMode="email"
               />
             </div>
 
             <div className="col-span-2 md:col-span-1">
-              <label className="block text-sm font-medium text-slate-700 mb-1">Telefone / WhatsApp</label>
+              <label className="block text-sm font-medium text-slate-700 mb-1.5">Telefone / WhatsApp</label>
               <input 
                 required 
                 type="tel" 
                 name="phone" 
                 value={formData.phone} 
                 onChange={handleChange}
-                className="w-full px-4 py-2.5 rounded-lg border border-slate-300 focus:border-brand-blue focus:ring-2 focus:ring-blue-100 outline-none transition-all bg-white/50"
+                className="w-full px-4 py-3 rounded-xl border border-slate-300 focus:border-brand-blue focus:ring-2 focus:ring-blue-100 outline-none transition-all bg-white/80 text-base"
                 placeholder="(41) 99999-9999"
+                inputMode="tel"
               />
             </div>
 
             <div className="col-span-2 md:col-span-1">
-              <label className="block text-sm font-medium text-slate-700 mb-1">Idade do Titular</label>
+              <label className="block text-sm font-medium text-slate-700 mb-1.5">Idade do Titular</label>
               <input 
                 required 
                 type="number" 
                 name="titularAge" 
                 value={formData.titularAge} 
                 onChange={handleChange}
-                className="w-full px-4 py-2.5 rounded-lg border border-slate-300 focus:border-brand-blue focus:ring-2 focus:ring-blue-100 outline-none transition-all bg-white/50"
+                className="w-full px-4 py-3 rounded-xl border border-slate-300 focus:border-brand-blue focus:ring-2 focus:ring-blue-100 outline-none transition-all bg-white/80 text-base"
                 placeholder="Ex: 35"
+                inputMode="numeric"
               />
             </div>
 
             <div className="col-span-2 md:col-span-1">
-              <label className="block text-sm font-medium text-slate-700 mb-1">Plano de Saúde</label>
+              <label className="block text-sm font-medium text-slate-700 mb-1.5">Plano de Saúde</label>
               <select 
                 name="plan" 
                 value={formData.plan} 
                 onChange={handleChange}
-                className="w-full px-4 py-2.5 rounded-lg border border-slate-300 focus:border-brand-blue focus:ring-2 focus:ring-blue-100 outline-none transition-all bg-white/50"
+                className="w-full px-4 py-3 rounded-xl border border-slate-300 focus:border-brand-blue focus:ring-2 focus:ring-blue-100 outline-none transition-all bg-white/80 text-base appearance-none"
               >
                 <option value="">Selecione...</option>
                 <option value="Unimed">Unimed</option>
@@ -145,17 +150,16 @@ Enviado via site Unipam.
                 <option value="Paraná Clínicas">Paraná Clínicas</option>
                 <option value="MedSênior">MedSênior</option>
                 <option value="MedSul">MedSul</option>
-                <option value="Outro/Não sei">Outro / Ainda não sei</option>
               </select>
             </div>
 
             <div className="col-span-2 md:col-span-1">
-                <label className="block text-sm font-medium text-slate-700 mb-1">Tipo</label>
+                <label className="block text-sm font-medium text-slate-700 mb-1.5">Tipo</label>
                 <select 
                     name="type" 
                     value={formData.type} 
                     onChange={handleChange}
-                    className="w-full px-4 py-2.5 rounded-lg border border-slate-300 focus:border-brand-blue focus:ring-2 focus:ring-blue-100 outline-none transition-all bg-white/50"
+                    className="w-full px-4 py-3 rounded-xl border border-slate-300 focus:border-brand-blue focus:ring-2 focus:ring-blue-100 outline-none transition-all bg-white/80 text-base appearance-none"
                 >
                     <option value="">Selecione...</option>
                     <option value="Individual">Individual (PF)</option>
@@ -171,9 +175,9 @@ Enviado via site Unipam.
                     <button 
                         type="button" 
                         onClick={addDependent}
-                        className="text-sm flex items-center gap-1 text-brand-blue font-semibold hover:text-blue-700 transition-colors"
+                        className="text-sm flex items-center gap-1 text-brand-blue font-bold p-2 hover:bg-blue-50 rounded-lg transition-colors"
                     >
-                        <Plus size={16} /> Adicionar Dependente
+                        <Plus size={18} /> Adicionar
                     </button>
                 </div>
                 
@@ -182,11 +186,8 @@ Enviado via site Unipam.
                         <p className="text-sm text-slate-400 italic">Nenhum dependente adicionado.</p>
                     )}
                     {dependents.map((dep, index) => (
-                        <motion.div 
+                        <div 
                             key={dep.id}
-                            initial={{ opacity: 0, height: 0 }}
-                            animate={{ opacity: 1, height: 'auto' }}
-                            exit={{ opacity: 0, height: 0 }}
                             className="flex items-end gap-3"
                         >
                             <div className="flex-1">
@@ -195,34 +196,33 @@ Enviado via site Unipam.
                                     type="number" 
                                     value={dep.age}
                                     onChange={(e) => handleDependentAgeChange(dep.id, e.target.value)}
-                                    className="w-full px-4 py-2 rounded-lg border border-slate-300 focus:border-brand-blue focus:ring-2 focus:ring-blue-100 outline-none bg-white/50"
+                                    className="w-full px-4 py-2.5 rounded-lg border border-slate-300 focus:border-brand-blue focus:ring-2 focus:ring-blue-100 outline-none bg-white/80 text-base"
                                     placeholder="Ex: 10"
                                     required
+                                    inputMode="numeric"
                                 />
                             </div>
                             <button 
                                 type="button"
                                 onClick={() => removeDependent(dep.id)}
-                                className="mb-1.5 p-2 text-red-400 hover:text-red-600 hover:bg-red-50 rounded-lg transition-colors"
-                                title="Remover dependente"
+                                className="mb-1 p-3 text-red-400 hover:text-red-600 hover:bg-red-50 rounded-lg transition-colors min-w-[48px] min-h-[48px] flex items-center justify-center"
+                                title="Remover"
                             >
-                                <Trash2 size={18} />
+                                <Trash2 size={20} />
                             </button>
-                        </motion.div>
+                        </div>
                     ))}
                 </div>
             </div>
 
             <div className="col-span-2 mt-6">
-              <motion.button
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
+              <button
                 type="submit"
-                className="w-full bg-brand-blue text-white font-bold py-3 rounded-xl shadow-lg shadow-blue-500/30 hover:shadow-blue-500/50 flex items-center justify-center gap-2 transition-all"
+                className="w-full bg-brand-blue text-white font-bold py-4 rounded-xl shadow-lg shadow-blue-500/30 hover:shadow-blue-500/50 flex items-center justify-center gap-2 transition-all active:scale-95 text-lg"
               >
                 <Send size={20} />
                 Enviar Solicitação
-              </motion.button>
+              </button>
             </div>
 
           </form>

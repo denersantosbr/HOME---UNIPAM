@@ -2,8 +2,9 @@
 <html lang="pt-BR" class="scroll-smooth">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
     <title>Unipam - Planos de Saúde</title>
+    <meta name="description" content="Encontre o plano de saúde ideal com a Unipam. Consultoria especializada em Unimed, Hapvida, Nossa Saúde e mais." />
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -17,8 +18,8 @@
             },
             colors: {
               brand: {
-                blue: '#0056b3', // Flag Blue approximation
-                light: '#e0f2fe', // Baby Blue
+                blue: '#0056b3',
+                light: '#e0f2fe',
                 dark: '#003d80',
                 accent: '#007bff'
               }
@@ -31,21 +32,30 @@
       body {
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;
+        text-rendering: optimizeLegibility;
       }
+      /* Prevent layout shift from scrollbar */
       html {
-        scroll-padding-top: 100px; /* Offset for fixed navbar */
+        scrollbar-gutter: stable;
       }
       .glass {
-        background: rgba(255, 255, 255, 0.7);
-        backdrop-filter: blur(10px);
-        -webkit-backdrop-filter: blur(10px);
-        border: 1px solid rgba(255, 255, 255, 0.3);
-      }
-      .glass-card {
         background: rgba(255, 255, 255, 0.85);
         backdrop-filter: blur(12px);
-        border: 1px solid rgba(255, 255, 255, 0.5);
-        box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.07);
+        -webkit-backdrop-filter: blur(12px);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+      }
+      .glass-card {
+        background: rgba(255, 255, 255, 0.8);
+        backdrop-filter: blur(16px);
+        border: 1px solid rgba(255, 255, 255, 0.6);
+      }
+      /* Custom utility for no-scrollbar but scrollable */
+      .no-scrollbar::-webkit-scrollbar {
+        display: none;
+      }
+      .no-scrollbar {
+        -ms-overflow-style: none;
+        scrollbar-width: none;
       }
     </style>
   <script type="importmap">
