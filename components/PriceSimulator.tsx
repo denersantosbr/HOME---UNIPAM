@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Calculator, MessageCircle } from 'lucide-react';
+import { Calculator, MessageCircle, Plus, Minus } from 'lucide-react';
 
 type PlanType = 'empresarial' | 'medsenior' | 'infantil' | 'familiar';
 
@@ -51,14 +51,33 @@ const pricingData = {
 
 export const PriceSimulator: React.FC = () => {
   const [selectedType, setSelectedType] = useState<PlanType>('empresarial');
-  const [selectedRange, setSelectedRange] = useState<number | null>(null);
+  const [quantities, setQuantities] = useState<Record<string, number>>({});
 
   const handleTypeSelect = (type: PlanType) => {
     setSelectedType(type);
-    setSelectedRange(null);
+    setQuantities({});
+  };
+
+  const updateQuantity = (range: string, delta: number) => {
+    setQuantities(prev => {
+      const current = prev[range] || 0;
+      const next = Math.max(0, current + delta);
+      if (next === 0) {
+        const { [range]: _, ...rest } = prev;
+        return rest;
+      }
+      return { ...prev, [range]: next };
+    });
   };
 
   const currentPlan = pricingData[selectedType];
+
+  const totalValue = currentPlan.prices.reduce((acc, item) => {
+    const qty = quantities[item.range] || 0;
+    return acc + (item.price * qty);
+  }, 0);
+
+  const totalLives = Object.values(quantities).reduce((a, b) => a + b, 0);
 
   return (
     <section id="valores" className="py-16 md:py-24 bg-slate-50">
@@ -70,7 +89,7 @@ export const PriceSimulator: React.FC = () => {
                   <Calculator size={24} />
                 </div>
                 <h2 className="text-3xl font-bold text-slate-900">Simulador de Valores</h2>
-                <p className="text-slate-600 mt-2">Selecione o perfil e veja os valores instantaneamente.</p>
+                <p className="text-slate-600 mt-2">Adicione quantas pessoas desejar para calcular o total.</p>
             </div>
 
             <div className="bg-white rounded-2xl shadow-xl overflow-hidden border border-slate-100">
@@ -102,45 +121,88 @@ export const PriceSimulator: React.FC = () => {
                 </div>
 
                 <div className="p-6 md:p-8">
-                    <div className="mb-6">
-                        <h3 className="text-xl font-bold text-slate-800">{currentPlan.title}</h3>
-                        <p className="text-sm text-slate-500">{currentPlan.subtitle}</p>
+                    <div className="mb-6 flex justify-between items-end">
+                        <div>
+                            <h3 className="text-xl font-bold text-slate-800">{currentPlan.title}</h3>
+                            <p className="text-sm text-slate-500">{currentPlan.subtitle}</p>
+                        </div>
+                        {totalLives > 0 && (
+                            <button 
+                                onClick={() => setQuantities({})}
+                                className="text-xs text-red-500 hover:text-red-700 font-medium underline"
+                            >
+                                Limpar tudo
+                            </button>
+                        )}
                     </div>
 
                     {/* Options Grid */}
-                    <div className="grid grid-cols-2 md:grid-cols-3 gap-3 mb-8">
-                        {currentPlan.prices.map((item, index) => (
-                            <button
-                                key={index}
-                                onClick={() => setSelectedRange(index)}
-                                className={`p-3 rounded-xl border text-left transition-all ${
-                                    selectedRange === index
-                                    ? 'border-brand-blue bg-blue-50 ring-1 ring-brand-blue'
-                                    : 'border-slate-200 hover:border-blue-200 hover:bg-slate-50'
-                                }`}
-                            >
-                                <span className="block text-xs text-slate-500 font-medium mb-1">
-                                    {item.range}
-                                </span>
-                                <span className="block text-lg font-bold text-slate-900">
-                                    R$ {item.price.toFixed(2).replace('.', ',')}
-                                </span>
-                            </button>
-                        ))}
+                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-8">
+                        {currentPlan.prices.map((item, index) => {
+                            const qty = quantities[item.range] || 0;
+                            return (
+                                <div
+                                    key={index}
+                                    className={`p-4 rounded-xl border transition-all ${
+                                        qty > 0
+                                        ? 'border-brand-blue bg-blue-50 ring-1 ring-brand-blue'
+                                        : 'border-slate-200 bg-white'
+                                    }`}
+                                >
+                                    <div className="flex justify-between items-start mb-3">
+                                        <div>
+                                            <span className="block text-xs text-slate-500 font-medium mb-1">
+                                                {item.range}
+                                            </span>
+                                            <span className="block text-lg font-bold text-slate-900">
+                                                R$ {item.price.toFixed(2).replace('.', ',')}
+                                            </span>
+                                        </div>
+                                        {qty > 0 && (
+                                            <span className="bg-brand-blue text-white text-xs font-bold px-2 py-1 rounded-full">
+                                                {qty}x
+                                            </span>
+                                        )}
+                                    </div>
+                                    
+                                    <div className="flex items-center justify-between bg-slate-100 rounded-lg p-1">
+                                        <button
+                                            onClick={() => updateQuantity(item.range, -1)}
+                                            disabled={qty === 0}
+                                            className="w-8 h-8 flex items-center justify-center rounded-md bg-white text-slate-600 shadow-sm disabled:opacity-50 disabled:cursor-not-allowed hover:bg-slate-50 active:scale-95 transition-all"
+                                            aria-label="Diminuir quantidade"
+                                        >
+                                            <Minus size={16} />
+                                        </button>
+                                        <span className="font-bold text-slate-700 w-8 text-center">
+                                            {qty}
+                                        </span>
+                                        <button
+                                            onClick={() => updateQuantity(item.range, 1)}
+                                            className="w-8 h-8 flex items-center justify-center rounded-md bg-brand-blue text-white shadow-sm hover:bg-blue-600 active:scale-95 transition-all"
+                                            aria-label="Aumentar quantidade"
+                                        >
+                                            <Plus size={16} />
+                                        </button>
+                                    </div>
+                                </div>
+                            );
+                        })}
                     </div>
 
                     {/* Result Display */}
-                    <div className="bg-slate-900 rounded-xl p-6 text-white text-center">
-                        <p className="text-slate-400 text-sm mb-1">Valor Estimado</p>
-                        <div className="text-4xl font-bold mb-2">
-                            {selectedRange !== null 
-                                ? `R$ ${currentPlan.prices[selectedRange].price.toFixed(2).replace('.', ',')}`
-                                : 'R$ 0,00'
-                            }
+                    <div className="bg-slate-900 rounded-xl p-6 text-white text-center relative overflow-hidden">
+                        <div className="relative z-10">
+                            <p className="text-slate-400 text-sm mb-1">
+                                Total Estimado ({totalLives} {totalLives === 1 ? 'vida' : 'vidas'})
+                            </p>
+                            <div className="text-4xl font-bold mb-2">
+                                R$ {totalValue.toFixed(2).replace('.', ',')}
+                            </div>
+                            <p className="text-xs text-slate-500">
+                                *Valores sujeitos a alteração sem aviso prévio.
+                            </p>
                         </div>
-                        <p className="text-xs text-slate-500">
-                            *Valores sujeitos a alteração sem aviso prévio.
-                        </p>
                     </div>
                 </div>
             </div>
