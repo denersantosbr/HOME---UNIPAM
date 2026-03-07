@@ -4,6 +4,7 @@ import { Hero } from './components/Hero';
 import { Partners } from './components/Partners';
 import { Services } from './components/Services';
 import { About } from './components/About';
+import { PriceSimulator } from './components/PriceSimulator';
 import { QuoteForm } from './components/QuoteForm';
 import { Footer } from './components/Footer';
 
@@ -19,6 +20,7 @@ function App() {
         {/* Componente Partners importado para limpar cache, mas retorna null (sem visual) */}
         <Partners />
         <Services />
+        <PriceSimulator />
         <About />
         <QuoteForm />
       </main>
