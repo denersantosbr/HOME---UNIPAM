@@ -15,7 +15,7 @@ export const Footer: React.FC = () => {
           <div className="space-y-6">
             <img 
                // WebP + Lazy Loading
-               src="https://lh3.googleusercontent.com/d/1L1TObqXm_SSDzvr-5d3ljRtT0WsqN9r_=w300-rw" 
+               src="https://lh3.googleusercontent.com/d/1D86To9UC0fwGJ-sFCeN50qqoKk3Gc459=w300-rw" 
                alt="Unipam Logo"
                loading="lazy"
                width="200"
@@ -27,7 +27,7 @@ export const Footer: React.FC = () => {
             </p>
             <div className="flex gap-4">
               <a 
-                href="https://www.instagram.com/unipam.planos/" 
+                href="https://www.instagram.com/unipamsaude/" 
                 target="_blank" 
                 rel="noreferrer"
                 className="w-12 h-12 rounded-full bg-slate-800 flex items-center justify-center hover:bg-brand-blue hover:text-white transition-all"
@@ -69,9 +69,9 @@ export const Footer: React.FC = () => {
                     <Phone className="text-brand-blue shrink-0" size={24} />
                     <span className="text-lg">(41) 3011-5389</span>
                 </a>
-                <a href="tel:4198919062" className="flex items-center gap-4 hover:text-white transition-colors py-2">
+                <a href="tel:4197217117" className="flex items-center gap-4 hover:text-white transition-colors py-2">
                     <Phone className="text-brand-blue shrink-0" size={24} />
-                    <span className="text-lg">(41) 9891-9062</span>
+                    <span className="text-lg">(41) 9721-7117</span>
                 </a>
                 <a href="mailto:vendas@clinipamplanos.com.br" className="flex items-center gap-4 hover:text-white transition-colors py-2 overflow-hidden">
                     <Mail className="text-brand-blue shrink-0" size={24} />
@@ -79,7 +79,7 @@ export const Footer: React.FC = () => {
                 </a>
             </div>
             <a 
-                href="https://wa.me/554198919062" 
+                href="https://wa.me/554197217117" 
                 target="_blank" 
                 rel="noreferrer"
                 className="block w-full bg-green-600 hover:bg-green-700 text-white text-center py-4 rounded-xl font-bold transition-colors mt-6 shadow-lg text-lg"

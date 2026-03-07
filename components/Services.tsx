@@ -66,7 +66,7 @@ export const Services: React.FC = () => {
               </p>
               
               <a 
-                href="https://wa.me/554198919062" 
+                href="https://wa.me/554197217117" 
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center justify-between w-full px-5 py-3 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold transition-all group-hover:shadow-md"

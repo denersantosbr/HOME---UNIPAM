@@ -99,7 +99,7 @@ export const About: React.FC = () => {
             </ul>
 
             <a 
-              href="https://wa.me/554198919062" 
+              href="https://wa.me/554197217117" 
               target="_blank" 
               rel="noopener noreferrer" 
               className="mt-8 bg-slate-900 text-white px-8 py-4 rounded-xl font-bold hover:bg-slate-800 transition-colors inline-block shadow-lg w-full md:w-auto text-center"

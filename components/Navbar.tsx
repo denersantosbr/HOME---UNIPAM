@@ -55,7 +55,7 @@ export const Navbar: React.FC = () => {
              aria-label="Ir para o topo"
            >
              <img 
-               src="https://lh3.googleusercontent.com/d/1L1TObqXm_SSDzvr-5d3ljRtT0WsqN9r_=w500-rw" 
+               src="https://lh3.googleusercontent.com/d/1D86To9UC0fwGJ-sFCeN50qqoKk3Gc459=w500-rw" 
                alt="Unipam Logo"
                width="300"
                height="120"
@@ -80,7 +80,7 @@ export const Navbar: React.FC = () => {
             </a>
           ))}
           <motion.a
-            href="https://wa.me/554198919062"
+            href="https://wa.me/554197217117"
             target="_blank"
             rel="noopener noreferrer"
             whileHover={{ scale: 1.05 }}
@@ -123,7 +123,7 @@ export const Navbar: React.FC = () => {
                 </a>
               ))}
               <a
-                href="https://wa.me/554198919062"
+                href="https://wa.me/554197217117"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="bg-brand-blue text-white w-full py-4 rounded-xl font-bold text-lg text-center shadow-md flex justify-center items-center gap-2 mt-2"
