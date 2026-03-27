@@ -35,15 +35,6 @@ export const Footer: React.FC = () => {
               >
                 <Instagram size={24} />
               </a>
-              <a 
-                href="https://br.linkedin.com/company/unipam-planos-de-saude" 
-                target="_blank" 
-                rel="noreferrer"
-                className="w-12 h-12 rounded-full bg-slate-800 flex items-center justify-center hover:bg-brand-blue hover:text-white transition-all"
-                aria-label="LinkedIn"
-              >
-                <Linkedin size={24} />
-              </a>
             </div>
           </div>
 
@@ -65,6 +56,10 @@ export const Footer: React.FC = () => {
           <div className="space-y-6">
             <h3 className="text-lg font-bold text-white">Fale Conosco</h3>
             <div className="space-y-4">
+                <a href="mailto:contato@unipamsaude.com" className="flex items-center gap-4 hover:text-white transition-colors py-2 overflow-hidden">
+                    <Mail className="text-brand-blue shrink-0" size={24} />
+                    <span className="truncate text-base">contato@unipamsaude.com</span>
+                </a>
                 <a href="tel:4130115389" className="flex items-center gap-4 hover:text-white transition-colors py-2">
                     <Phone className="text-brand-blue shrink-0" size={24} />
                     <span className="text-lg">(41) 3011-5389</span>
@@ -73,19 +68,7 @@ export const Footer: React.FC = () => {
                     <Phone className="text-brand-blue shrink-0" size={24} />
                     <span className="text-lg">(41) 9721-7117</span>
                 </a>
-                <a href="mailto:vendas@clinipamplanos.com.br" className="flex items-center gap-4 hover:text-white transition-colors py-2 overflow-hidden">
-                    <Mail className="text-brand-blue shrink-0" size={24} />
-                    <span className="truncate text-base">vendas@clinipamplanos.com.br</span>
-                </a>
             </div>
-            <a 
-                href="https://wa.me/554197217117" 
-                target="_blank" 
-                rel="noreferrer"
-                className="block w-full bg-green-600 hover:bg-green-700 text-white text-center py-4 rounded-xl font-bold transition-colors mt-6 shadow-lg text-lg"
-            >
-                Chamar no WhatsApp
-            </a>
           </div>
         </div>
 

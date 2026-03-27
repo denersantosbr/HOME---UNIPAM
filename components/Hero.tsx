@@ -25,14 +25,16 @@ export const Hero: React.FC = () => {
 
             <div className="flex flex-col sm:flex-row gap-4 mb-8 justify-center">
               <motion.a
-                href="https://wa.me/554197217117"
-                target="_blank"
-                rel="noopener noreferrer"
+                href="#quote"
+                onClick={(e) => {
+                  e.preventDefault();
+                  document.getElementById('quote')?.scrollIntoView({ behavior: 'smooth' });
+                }}
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 className="bg-brand-blue text-white px-8 py-4 rounded-xl font-bold text-lg shadow-xl shadow-blue-600/20 flex items-center justify-center gap-2 min-h-[56px]"
               >
-                Cotar Agora
+                Solicitar Cotação
                 <ArrowRight size={20} />
               </motion.a>
             </div>
