@@ -39,17 +39,20 @@ export const QuoteForm: React.FC = () => {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     
-    const body = `Nova Cotação Solicitada:
+    const text = `*Nova Cotação Solicitada do Site unipamsaude.com:*
     
-Nome: ${formData.name}
-E-mail: ${formData.email}
-WhatsApp: ${formData.whatsapp}
-Possui CNPJ ou MEI: ${formData.hasCnpj}
-Idades: ${formData.ages}
-Já possui plano: ${formData.hasPlan}
-Operadoras: ${formData.operators.join(', ')}`;
+*Nome:* ${formData.name}
+*E-mail:* ${formData.email}
+*WhatsApp:* ${formData.whatsapp}
+*Possui CNPJ ou MEI:* ${formData.hasCnpj}
+*Idades:* ${formData.ages}
+*Já possui plano:* ${formData.hasPlan}
+*Operadoras:* ${formData.operators.join(', ')}`;
 
-    window.location.href = `mailto:contato@unipamsaude.com?subject=Nova Cotação - ${formData.name}&body=${encodeURIComponent(body)}`;
+    const whatsappNumber = "554197217117";
+    const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(text)}`;
+    
+    window.open(whatsappUrl, '_blank');
     setIsSubmitted(true);
   };
 
