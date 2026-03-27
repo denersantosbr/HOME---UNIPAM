@@ -49,7 +49,7 @@ export const QuoteForm: React.FC = () => {
 *Já possui plano:* ${formData.hasPlan}
 *Operadoras:* ${formData.operators.join(', ')}`;
 
-    const whatsappNumber = "554197217117";
+    const whatsappNumber = "554195898548";
     const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(text)}`;
     
     window.open(whatsappUrl, '_blank');
