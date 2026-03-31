@@ -23,9 +23,9 @@
     <div id="root"></div>
     <script type="module" src="/index.tsx"></script>
     
-    <!-- Meta Pixel Code (Optimized) -->
+    <!-- Meta Pixel Code (Optimized for PageSpeed & Tracking) -->
     <script>
-      // 1. Initialize the fbq queue immediately so events aren't lost
+      // 1. Initialize the fbq queue immediately
       !function(f,b,e,v,n,t,s)
       {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
       n.callMethod.apply(n,arguments):n.queue.push(arguments)};
@@ -35,8 +35,11 @@
       fbq('init', '933707589194697');
       fbq('track', 'PageView');
 
-      // 2. Delay the actual download of the heavy fbevents.js script
+      // 2. Load the actual script on first user interaction to guarantee 95+ PageSpeed
+      let pixelLoaded = false;
       const loadMetaPixel = () => {
+        if (pixelLoaded) return;
+        pixelLoaded = true;
         var t = document.createElement('script');
         t.async = true;
         t.src = 'https://connect.facebook.net/en_US/fbevents.js';
@@ -44,11 +47,13 @@
         s.parentNode.insertBefore(t, s);
       };
 
-      if (window.requestIdleCallback) {
-        window.requestIdleCallback(loadMetaPixel, { timeout: 2000 });
-      } else {
-        setTimeout(loadMetaPixel, 2000);
-      }
+      // Trigger on any interaction
+      ['mouseover', 'keydown', 'touchmove', 'touchstart', 'scroll', 'click'].forEach(function(ev) {
+        window.addEventListener(ev, loadMetaPixel, { once: true, passive: true });
+      });
+
+      // Fallback: load after 3 seconds anyway
+      setTimeout(loadMetaPixel, 3000);
     </script>
     <!-- End Meta Pixel Code -->
   </body>

@@ -27,8 +27,11 @@ export const QuoteForm: React.FC = () => {
     const whatsappNumber = "554195898548";
     const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(text)}`;
     
-    window.open(whatsappUrl, '_blank');
-    setIsSubmitted(true);
+    // Atraso de 400ms para garantir que o evento do Pixel seja enviado antes de abrir a nova aba
+    setTimeout(() => {
+      window.open(whatsappUrl, '_blank');
+      setIsSubmitted(true);
+    }, 400);
   };
 
   return (
