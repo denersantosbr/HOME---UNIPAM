@@ -17,7 +17,7 @@ export const QuoteForm: React.FC = () => {
       (window as any).fbq('track', 'Lead');
     }
 
-    const text = `*Nova Cotação Solicitada do Site unipamsaude.com:*
+    const text = `Olá, gostaria de fazer uma cotação de plano de saúde.
     
 *Nome:* ${formData.name}
 *Possui CNPJ ou MEI:* ${formData.hasCnpj}

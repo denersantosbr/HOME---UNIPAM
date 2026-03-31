@@ -30,7 +30,7 @@ export const Hero: React.FC = () => {
                 }}
                 className="bg-brand-blue text-white px-8 py-4 rounded-xl font-bold text-lg shadow-xl shadow-blue-600/20 flex items-center justify-center gap-2 min-h-[56px] transition-transform hover:scale-105 active:scale-95"
               >
-                Solicitar Cotação
+                Fazer Cotação
                 <ArrowRight size={20} />
               </a>
             </div>
