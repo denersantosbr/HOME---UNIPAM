@@ -1,11 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
 import { ArrowRight, CheckCircle2, Heart } from 'lucide-react';
 
 export const Hero: React.FC = () => {
   return (
-    // FIX: pt-28 (112px) mobile aligns with the smaller h-12 navbar. md:pt-48 desktop.
-    <section id="home" className="relative pt-28 pb-16 md:pt-48 md:pb-32 overflow-hidden bg-gradient-to-b from-brand-light/30 to-white">
+    <section id="home" className="relative pt-16 pb-16 md:pt-32 md:pb-32 overflow-hidden bg-gradient-to-b from-brand-light/30 to-white">
       
       <div className="hidden md:block absolute top-0 right-0 w-[500px] h-[500px] bg-blue-200/40 rounded-full blur-3xl -translate-y-1/2 translate-x-1/4 -z-10 will-change-transform" />
       <div className="hidden md:block absolute bottom-0 left-0 w-[400px] h-[400px] bg-brand-light rounded-full blur-3xl translate-y-1/3 -translate-x-1/4 -z-10 will-change-transform" />
@@ -24,24 +22,22 @@ export const Hero: React.FC = () => {
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 mb-8 justify-center">
-              <motion.a
+              <a
                 href="#quote"
                 onClick={(e) => {
                   e.preventDefault();
                   document.getElementById('quote')?.scrollIntoView({ behavior: 'smooth' });
                 }}
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="bg-brand-blue text-white px-8 py-4 rounded-xl font-bold text-lg shadow-xl shadow-blue-600/20 flex items-center justify-center gap-2 min-h-[56px]"
+                className="bg-brand-blue text-white px-8 py-4 rounded-xl font-bold text-lg shadow-xl shadow-blue-600/20 flex items-center justify-center gap-2 min-h-[56px] transition-transform hover:scale-105 active:scale-95"
               >
                 Solicitar Cotação
                 <ArrowRight size={20} />
-              </motion.a>
+              </a>
             </div>
 
             <div className="flex flex-wrap gap-x-6 gap-y-2 text-sm text-slate-600 font-medium justify-center">
-                <span className="flex items-center gap-1.5"><CheckCircle2 size={18} className="text-brand-blue shrink-0"/> Atendimento Humanizado</span>
-                <span className="flex items-center gap-1.5"><CheckCircle2 size={18} className="text-brand-blue shrink-0"/> Consultoria Gratuita</span>
+                <span className="flex items-center gap-1.5"><CheckCircle2 size={18} className="text-brand-blue shrink-0"/> Cotação Gratuita</span>
+                <span className="flex items-center gap-1.5"><CheckCircle2 size={18} className="text-brand-blue shrink-0"/> Rápido e Fácil</span>
             </div>
           </div>
 

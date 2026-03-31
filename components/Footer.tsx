@@ -1,7 +1,11 @@
-import React from 'react';
-import { Instagram, Linkedin, MapPin, Phone, Mail, ArrowUp } from 'lucide-react';
+import React, { useState } from 'react';
+import { Instagram, MapPin, Phone, Mail, ArrowUp, X } from 'lucide-react';
+
+type ModalType = 'privacy' | 'terms' | 'lgpd' | null;
 
 export const Footer: React.FC = () => {
+  const [activeModal, setActiveModal] = useState<ModalType>(null);
+
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
@@ -44,7 +48,7 @@ export const Footer: React.FC = () => {
             <div className="flex items-start gap-4">
               <MapPin className="text-brand-blue shrink-0 mt-1" size={24} />
               <p className="text-base leading-relaxed">
-                Rua Frei Francisco Sampaio 326, Sala<br />
+                Rua Frei Francisco Sampaio 326<br />
                 Jardim das Américas<br />
                 Curitiba PR<br />
                 CEP: 81530-380
@@ -77,16 +81,72 @@ export const Footer: React.FC = () => {
             <p>Razão Social: Unipam Assessoria e Vendas LTDA</p>
             <p>CNPJ: 09.571.165/0001-98</p>
           </div>
-          <p className="text-center">© {new Date().getFullYear()} Unipam. Todos os direitos reservados.</p>
+          <div className="flex flex-col items-center md:items-start gap-2">
+            <p className="text-center md:text-left">© {new Date().getFullYear()} Unipam. Todos os direitos reservados.</p>
+            <div className="flex flex-wrap justify-center md:justify-start gap-4 mt-2">
+              <button onClick={() => setActiveModal('privacy')} className="hover:text-white transition-colors underline decoration-slate-600 underline-offset-4">Política de Privacidade</button>
+              <button onClick={() => setActiveModal('terms')} className="hover:text-white transition-colors underline decoration-slate-600 underline-offset-4">Termos de Uso</button>
+              <button onClick={() => setActiveModal('lgpd')} className="hover:text-white transition-colors underline decoration-slate-600 underline-offset-4">LGPD</button>
+            </div>
+          </div>
           <button 
             onClick={scrollToTop} 
-            className="w-12 h-12 rounded-full bg-slate-800 flex items-center justify-center hover:bg-brand-blue text-white transition-colors shadow-lg"
+            className="w-12 h-12 rounded-full bg-slate-800 flex items-center justify-center hover:bg-brand-blue text-white transition-colors shadow-lg shrink-0"
             aria-label="Voltar ao topo"
           >
             <ArrowUp size={24} />
           </button>
         </div>
       </div>
+
+      {/* Modals */}
+      {activeModal && (
+        <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-sm" onClick={() => setActiveModal(null)}>
+          <div className="bg-white rounded-2xl p-6 md:p-8 max-w-2xl w-full max-h-[90vh] overflow-y-auto relative shadow-2xl text-slate-800" onClick={e => e.stopPropagation()}>
+            <button onClick={() => setActiveModal(null)} className="absolute top-4 right-4 p-2 text-slate-400 hover:text-slate-700 bg-slate-100 rounded-full transition-colors">
+              <X size={24} />
+            </button>
+            
+            {activeModal === 'lgpd' && (
+              <>
+                <h2 className="text-2xl font-bold mb-4 text-slate-900">Conformidade com a LGPD</h2>
+                <div className="space-y-4 text-slate-700">
+                  <p>Em conformidade com a Lei nº 13.709/2018 (LGPD), informamos que:</p>
+                  <p><strong>Finalidade:</strong> Os dados coletados (como nome, idade e preferências hospitalares) têm a finalidade exclusiva de elaborar um estudo comparativo de planos de saúde e permitir o contato consultivo via WhatsApp.</p>
+                  <p><strong>Controlador de Dados:</strong> O tratamento dos dados é realizado pela Unipam Saúde, sob responsabilidade do proprietário Isael José dos Santos.</p>
+                  <p><strong>Segurança:</strong> Implementamos medidas técnicas de segurança para proteger seus dados pessoais contra acessos não autorizados.</p>
+                  <p><strong>Acesso e Exclusão:</strong> A qualquer momento, você pode solicitar a confirmação da existência de tratamento, o acesso aos seus dados ou a exclusão definitiva da nossa base de contatos diretamente via WhatsApp.</p>
+                </div>
+              </>
+            )}
+
+            {activeModal === 'privacy' && (
+              <>
+                <h2 className="text-2xl font-bold mb-4 text-slate-900">Política de Privacidade</h2>
+                <div className="space-y-4 text-slate-700">
+                  <p>A sua privacidade é importante para nós. É política da Unipam Saúde respeitar a sua privacidade em relação a qualquer informação sua que possamos coletar no site.</p>
+                  <p><strong>Coleta de Dados:</strong> Solicitamos informações pessoais apenas quando realmente precisamos delas para lhe fornecer um serviço (como a geração do seu estudo técnico de plano de saúde). Fazemo-lo por meios justos e legais, com o seu conhecimento e consentimento.</p>
+                  <p><strong>Uso das Informações:</strong> Não compartilhamos informações de identificação pessoal publicamente ou com terceiros, exceto quando exigido por lei ou para a finalização da contratação do plano de saúde por sua solicitação expressa.</p>
+                  <p><strong>Retenção:</strong> Retemos as informações coletadas apenas pelo tempo necessário para fornecer o serviço solicitado.</p>
+                  <p><strong>Seus Direitos:</strong> Você é livre para recusar a nossa solicitação de informações pessoais, entendendo que talvez não possamos fornecer alguns dos serviços desejados (como o envio da cotação personalizada).</p>
+                </div>
+              </>
+            )}
+
+            {activeModal === 'terms' && (
+              <>
+                <h2 className="text-2xl font-bold mb-4 text-slate-900">Termos e Condições de Uso</h2>
+                <div className="space-y-4 text-slate-700">
+                  <p>Ao acessar este site e solicitar um estudo técnico, você concorda em cumprir estes termos de serviço:</p>
+                  <p><strong>Uso do Serviço:</strong> O relatório gerado por nossa inteligência de dados é de caráter informativo e consultivo. Os valores e redes hospitalares são baseados nas tabelas vigentes das operadoras e podem sofrer alterações sem aviso prévio.</p>
+                  <p><strong>Responsabilidade:</strong> A Unipam Saúde atua como assessoria técnica e corretora autorizada. A aceitação do risco e a vigência do plano dependem exclusivamente da aprovação da operadora de saúde escolhida.</p>
+                  <p><strong>Propriedade Intelectual:</strong> O layout e a estrutura do estudo técnico fornecido são de propriedade do estrategista responsável, sendo proibida a reprodução para fins comerciais por terceiros.</p>
+                </div>
+              </>
+            )}
+          </div>
+        </div>
+      )}
     </footer>
   );
 };
