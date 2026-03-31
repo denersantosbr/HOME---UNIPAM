@@ -23,27 +23,31 @@
     <div id="root"></div>
     <script type="module" src="/index.tsx"></script>
     
-    <!-- Meta Pixel Code (Delayed) -->
+    <!-- Meta Pixel Code (Optimized) -->
     <script>
-      // Delay Meta Pixel execution until after the main thread is idle
-      // or after a short timeout to prevent blocking the initial render
-      const initMetaPixel = () => {
-        !function(f,b,e,v,n,t,s)
-        {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-        n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-        if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-        n.queue=[];t=b.createElement(e);t.async=!0;
-        t.src=v;s=b.getElementsByTagName(e)[0];
-        s.parentNode.insertBefore(t,s)}(window, document,'script',
-        'https://connect.facebook.net/en_US/fbevents.js');
-        fbq('init', '933707589194697');
-        fbq('track', 'PageView');
+      // 1. Initialize the fbq queue immediately so events aren't lost
+      !function(f,b,e,v,n,t,s)
+      {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+      n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+      if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+      n.queue=[];}(window, document,'script','https://connect.facebook.net/en_US/fbevents.js');
+      
+      fbq('init', '933707589194697');
+      fbq('track', 'PageView');
+
+      // 2. Delay the actual download of the heavy fbevents.js script
+      const loadMetaPixel = () => {
+        var t = document.createElement('script');
+        t.async = true;
+        t.src = 'https://connect.facebook.net/en_US/fbevents.js';
+        var s = document.getElementsByTagName('script')[0];
+        s.parentNode.insertBefore(t, s);
       };
 
       if (window.requestIdleCallback) {
-        window.requestIdleCallback(initMetaPixel, { timeout: 2000 });
+        window.requestIdleCallback(loadMetaPixel, { timeout: 2000 });
       } else {
-        setTimeout(initMetaPixel, 2000);
+        setTimeout(loadMetaPixel, 2000);
       }
     </script>
     <!-- End Meta Pixel Code -->
