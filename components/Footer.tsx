@@ -27,7 +27,7 @@ export const Footer: React.FC = () => {
                className="h-20 w-auto object-contain brightness-0 invert opacity-90"
             />
             <p className="text-slate-400 leading-relaxed text-sm md:text-base">
-              Assessoria especializada em planos de saúde. Transparência, ética e compromisso com o seu bem-estar há mais de 17 anos.
+              Assessoria especializada em planos de saúde. Transparência, ética e compromisso com o seu bem-estar há mais de 18 anos.
             </p>
             <div className="flex gap-4">
               <a 

@@ -14,7 +14,7 @@ export const Hero: React.FC = () => {
           {/* Text Content */}
           <div className="z-10">
             <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-[1.15] text-slate-900 mb-6 tracking-tight">
-              Cuidando da saúde dos Curitibanos a mais de <span className="text-brand-blue">17 anos</span>
+              Cuidando da saúde dos Curitibanos a mais de <span className="text-brand-blue">18 anos</span>
             </h1>
             
             <p className="text-base sm:text-lg text-slate-600 mb-8 leading-relaxed max-w-2xl mx-auto">
