@@ -192,8 +192,8 @@ export const Quotes: React.FC = () => {
               <div className="space-y-4 mb-8">
                 {quote.prices.map((p, i) => (
                   <div key={i} className="flex justify-between text-slate-300 items-center">
-                    <span className={`text-base ${p.color || 'text-slate-400'}`}>{p.age}</span>
-                    <span className={`text-lg font-medium ${(p as any).color ? 'text-white' : 'text-white'}`}>{p.value}</span>
+                    <span className={`text-base font-medium drop-shadow-md ${p.color || 'text-slate-100'}`}>{p.age}</span>
+                    <span className={`text-lg font-bold drop-shadow-md ${(p as any).color ? 'text-white' : 'text-white'}`}>{p.value}</span>
                   </div>
                 ))}
               </div>
