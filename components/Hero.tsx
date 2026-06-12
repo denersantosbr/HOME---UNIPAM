@@ -4,7 +4,7 @@ import { scrollToTarget } from './Navbar';
 
 export const Hero: React.FC = () => {
   return (
-    <section id="home" className="w-full min-h-screen relative flex flex-col justify-center overflow-hidden bg-[#030712] pt-24 pb-20">
+    <section id="home" className="w-full min-h-screen relative flex flex-col justify-center pt-24 pb-20">
       
       {/* Top Navbar */}
       <header className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-7xl p-6 flex justify-between items-center z-50">
@@ -18,18 +18,6 @@ export const Hero: React.FC = () => {
           Fazer Cotação
         </button>
       </header>
-      
-      {/* Background Image from user */}
-      <div className="absolute inset-0 z-0 pointer-events-none select-none">
-        <img 
-          src="https://lh3.googleusercontent.com/d/1U9WT09ZFdnD8Qds8V-Nf_myDY2rHEGb2" 
-          alt="Hero Background" 
-          className="w-full h-full object-cover opacity-50" 
-          style={{ objectPosition: 'center 15%' }}
-        />
-        {/* Dark gradient overlay to blend bottom */}
-        <div className="absolute inset-0 bg-gradient-to-t from-[#030712] via-[#030712]/50 to-transparent" />
-      </div>
       
       <div className="container mx-auto px-4 relative z-10 text-center flex flex-col items-center">
         

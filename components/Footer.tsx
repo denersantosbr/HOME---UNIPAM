@@ -11,7 +11,7 @@ export const Footer: React.FC = () => {
   };
 
   return (
-    <footer id="contact" className="snap-section-end bg-[#02040a] text-slate-400 pt-16 pb-8 relative border-t border-white/5">
+    <footer id="contact" className="snap-section-end bg-[#02040a]/80 backdrop-blur-md text-slate-400 pt-16 pb-8 relative border-t border-white/5">
       <div className="container mx-auto px-4 md:px-8">
         <div className="grid md:grid-cols-3 gap-12 mb-16">
           

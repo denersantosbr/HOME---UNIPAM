@@ -152,7 +152,7 @@ const buttonStyles = {
 
 export const Quotes: React.FC = () => {
   return (
-    <div id="quotes-start" className="w-full relative bg-[#030712] py-24 flex flex-col gap-16 md:gap-32">
+    <div id="quotes-start" className="w-full relative bg-transparent py-24 flex flex-col gap-16 md:gap-32">
       {quotes.map((quote, idx) => {
         const theme = colorStyles[quote.color as keyof typeof colorStyles];
         const btnTheme = buttonStyles[quote.color as keyof typeof buttonStyles];

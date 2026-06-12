@@ -32,7 +32,7 @@ export const QuoteForm: React.FC = () => {
   };
 
   return (
-    <section id="quote" className="snap-section min-h-screen py-24 bg-[#030712] relative flex flex-col justify-center overflow-hidden">
+    <section id="quote" className="snap-section min-h-screen py-24 relative flex flex-col justify-center overflow-hidden">
       
       {/* Background glow for form */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[80%] h-[80%] max-w-4xl bg-cyan-900/10 blur-[120px] rounded-full pointer-events-none" />
