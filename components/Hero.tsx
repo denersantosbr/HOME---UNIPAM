@@ -75,6 +75,24 @@ export const Hero: React.FC = () => {
           <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
         </button>
 
+        <div className="mt-12 flex flex-wrap justify-center items-center gap-x-3 gap-y-2 text-sm md:text-base font-medium tracking-wide animate-in fade-in duration-1000 delay-500">
+          <span className="text-emerald-400 drop-shadow-sm">Unimed</span>
+          <span className="text-white/30">|</span>
+          <span className="text-purple-400 drop-shadow-sm">Select</span>
+          <span className="text-white/30">|</span>
+          <span className="text-white drop-shadow-sm">Amil</span>
+          <span className="text-white/30">|</span>
+          <span className="text-red-400 drop-shadow-sm">PR Clínicas</span>
+          <span className="text-white/30">|</span>
+          <span className="text-blue-400 drop-shadow-sm">MedSul</span>
+          <span className="text-white/30">|</span>
+          <span className="text-yellow-400 drop-shadow-sm">Nossa Saúde</span>
+          <span className="text-white/30">|</span>
+          <span className="text-orange-400 drop-shadow-sm">Hapvida Clinipam</span>
+          <span className="text-white/30">|</span>
+          <span className="text-[#8B4513] drop-shadow-sm">MedSênior</span>
+        </div>
+
       </div>
     </section>
   );
