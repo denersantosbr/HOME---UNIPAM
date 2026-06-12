@@ -1,8 +1,37 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { ArrowRight, ShieldCheck } from 'lucide-react';
 import { scrollToTarget } from './Navbar';
 
 export const Hero: React.FC = () => {
+  const [text, setText] = useState('');
+  const [wordIndex, setWordIndex] = useState(0);
+  const [isDeleting, setIsDeleting] = useState(false);
+  const words = ['Empresarial', 'Familiar', 'Individual'];
+
+  useEffect(() => {
+    const currentWord = words[wordIndex];
+    let timeout: ReturnType<typeof setTimeout>;
+
+    if (isDeleting) {
+      timeout = setTimeout(() => {
+        setText(currentWord.substring(0, text.length - 1));
+        if (text.length === 1) { // change to 1 so the empty string triggers next state quickly
+          setIsDeleting(false);
+          setWordIndex((prev) => (prev + 1) % words.length);
+        }
+      }, 50);
+    } else {
+      timeout = setTimeout(() => {
+        setText(currentWord.substring(0, text.length + 1));
+        if (text.length === currentWord.length) {
+          timeout = setTimeout(() => setIsDeleting(true), 2000);
+        }
+      }, 100);
+    }
+
+    return () => clearTimeout(timeout);
+  }, [text, isDeleting, wordIndex]);
+
   return (
     <section id="home" className="w-full min-h-screen relative flex flex-col justify-center pt-24 pb-20">
       
@@ -26,9 +55,17 @@ export const Hero: React.FC = () => {
           Corretora Autorizada
         </div>
 
-        <h1 className="text-4xl sm:text-5xl md:text-7xl font-bold tracking-tight mb-10 max-w-5xl text-transparent bg-clip-text bg-gradient-to-b from-white via-white to-white/70 leading-[1.1] animate-in slide-in-from-bottom-4 duration-1000">
-          Cuidando da saúde dos Curitibanos a mais de <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-300 to-blue-500 drop-shadow-sm whitespace-nowrap">18 anos</span>
+        <h1 className="text-4xl sm:text-5xl md:text-7xl font-bold tracking-tight mb-6 max-w-5xl text-transparent bg-clip-text bg-gradient-to-b from-white via-white to-white/70 leading-[1.1] animate-in slide-in-from-bottom-4 duration-1000">
+          Plano de Saúde <br className="md:hidden" />
+          <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-300 to-blue-500 drop-shadow-sm whitespace-nowrap min-w-[280px] inline-block text-left">
+            {text}
+            <span className="animate-pulse text-cyan-300">|</span>
+          </span>
         </h1>
+
+        <p className="text-lg md:text-xl text-slate-300 max-w-2xl mb-10 mx-auto animate-in fade-in duration-1000 delay-300 font-medium tracking-wide">
+          Unipam. Cuidando da saúde dos Curitibanos a mais de 18 anos
+        </p>
 
         <button 
           onClick={() => scrollToTarget('quotes-start')}
