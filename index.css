@@ -1,38 +1,64 @@
 @import "tailwindcss";
 
 @theme {
-  --color-brand-blue: #0056b3;
-  --color-brand-light: #e0f2fe;
-  --color-brand-dark: #003d80;
-  --color-brand-accent: #007bff;
+  --color-brand-blue: #06b6d4; /* cyan-500 */
+  --color-brand-light: #cffafe; /* cyan-100 */
+  --color-brand-dark: #083344; /* cyan-950 */
+  --color-brand-accent: #0ea5e9; /* sky-500 */
   --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+}
+
+html {
+  scrollbar-gutter: stable;
+  scroll-behavior: smooth;
+  background-color: #030712;
 }
 
 body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
+  background-color: #030712;
+  color: #f8fafc;
 }
 
-/* Prevent layout shift from scrollbar */
-html {
-  scrollbar-gutter: stable;
+.snap-section {
+  /* Scroll snap removed */
 }
 
+.snap-section-end {
+  /* Scroll snap removed */
+}
+
+/* Custom Scrollbar for dark theme */
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: #030712;
+}
+::-webkit-scrollbar-thumb {
+  background: #1e293b;
+  border-radius: 5px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #334155;
+}
+
+/* Glassmorphism utils */
 .glass {
-  background: rgba(255, 255, 255, 0.85);
+  background: rgba(15, 23, 42, 0.6);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
 }
 
 .glass-card {
-  background: rgba(255, 255, 255, 0.8);
+  background: rgba(15, 23, 42, 0.8);
   backdrop-filter: blur(16px);
-  border: 1px solid rgba(255, 255, 255, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-/* Custom utility for no-scrollbar but scrollable */
 .no-scrollbar::-webkit-scrollbar {
   display: none;
 }

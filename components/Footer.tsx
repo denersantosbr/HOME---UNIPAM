@@ -11,21 +11,24 @@ export const Footer: React.FC = () => {
   };
 
   return (
-    <footer id="contact" className="bg-slate-900 text-slate-300 pt-16 pb-8 relative">
+    <footer id="contact" className="snap-section-end bg-[#02040a] text-slate-400 pt-16 pb-8 relative border-t border-white/5">
       <div className="container mx-auto px-4 md:px-8">
         <div className="grid md:grid-cols-3 gap-12 mb-16">
           
           {/* Brand Column */}
           <div className="space-y-6">
-            <img 
-               // WebP + Lazy Loading
-               src="https://lh3.googleusercontent.com/d/1D86To9UC0fwGJ-sFCeN50qqoKk3Gc459=w300-rw" 
-               alt="Unipam Logo"
-               loading="lazy"
-               width="200"
-               height="100"
-               className="h-20 w-auto object-contain brightness-0 invert opacity-90"
-            />
+            <div className="text-2xl font-bold text-white flex items-center gap-2">
+              <img 
+                src="/logo.png" 
+                alt="Unipam Logo" 
+                className="h-10 w-auto" 
+                onError={(e) => {
+                  e.currentTarget.src = "https://lh3.googleusercontent.com/d/1D86To9UC0fwGJ-sFCeN50qqoKk3Gc459=w300-rw";
+                  e.currentTarget.classList.add("brightness-0", "invert", "opacity-90");
+                }}
+              />
+              UNIPAM
+            </div>
             <p className="text-slate-400 leading-relaxed text-sm md:text-base">
               Assessoria especializada em planos de saúde. Transparência, ética e compromisso com o seu bem-estar há mais de 18 anos.
             </p>
@@ -34,7 +37,7 @@ export const Footer: React.FC = () => {
                 href="https://www.instagram.com/unipamsaude/" 
                 target="_blank" 
                 rel="noreferrer"
-                className="w-12 h-12 rounded-full bg-slate-800 flex items-center justify-center hover:bg-brand-blue hover:text-white transition-all"
+                className="w-12 h-12 rounded-full border border-slate-800 bg-slate-900/50 flex items-center justify-center hover:bg-cyan-500 hover:border-cyan-500 hover:text-white transition-all text-slate-300"
                 aria-label="Instagram"
               >
                 <Instagram size={24} />
@@ -46,7 +49,7 @@ export const Footer: React.FC = () => {
           <div className="space-y-6">
             <h3 className="text-lg font-bold text-white">Onde Estamos</h3>
             <div className="flex items-start gap-4">
-              <MapPin className="text-brand-blue shrink-0 mt-1" size={24} />
+              <MapPin className="text-cyan-500 shrink-0 mt-1" size={24} />
               <p className="text-base leading-relaxed">
                 Rua Frei Francisco Sampaio 326<br />
                 Jardim das Américas<br />
@@ -61,22 +64,22 @@ export const Footer: React.FC = () => {
             <h3 className="text-lg font-bold text-white">Fale Conosco</h3>
             <div className="space-y-4">
                 <a href="mailto:contato@unipamsaude.com" className="flex items-center gap-4 hover:text-white transition-colors py-2 overflow-hidden">
-                    <Mail className="text-brand-blue shrink-0" size={24} />
+                    <Mail className="text-cyan-500 shrink-0" size={24} />
                     <span className="truncate text-base">contato@unipamsaude.com</span>
                 </a>
                 <a href="tel:4130115389" className="flex items-center gap-4 hover:text-white transition-colors py-2">
-                    <Phone className="text-brand-blue shrink-0" size={24} />
+                    <Phone className="text-cyan-500 shrink-0" size={24} />
                     <span className="text-lg">(41) 3011-5389</span>
                 </a>
                 <a href="tel:4195898548" className="flex items-center gap-4 hover:text-white transition-colors py-2">
-                    <Phone className="text-brand-blue shrink-0" size={24} />
+                    <Phone className="text-cyan-500 shrink-0" size={24} />
                     <span className="text-lg">(41) 9589-8548</span>
                 </a>
             </div>
           </div>
         </div>
 
-        <div className="border-t border-slate-800 pt-8 flex flex-col md:flex-row justify-between items-center text-sm text-slate-500 gap-6">
+        <div className="border-t border-white/5 pt-8 flex flex-col md:flex-row justify-between items-center text-sm text-slate-500 gap-6">
           <div className="text-center md:text-left space-y-1">
             <p>Razão Social: Unipam Assessoria e Vendas LTDA</p>
             <p>CNPJ: 09.571.165/0001-98</p>
@@ -91,7 +94,7 @@ export const Footer: React.FC = () => {
           </div>
           <button 
             onClick={scrollToTop} 
-            className="w-12 h-12 rounded-full bg-slate-800 flex items-center justify-center hover:bg-brand-blue text-white transition-colors shadow-lg shrink-0"
+            className="w-12 h-12 rounded-full bg-slate-900 border border-slate-800 flex items-center justify-center hover:bg-cyan-500 hover:text-slate-900 hover:border-cyan-500 text-slate-400 transition-all shadow-lg shrink-0"
             aria-label="Voltar ao topo"
           >
             <ArrowUp size={24} />

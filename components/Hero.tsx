@@ -1,47 +1,55 @@
-import React, { useState, useEffect } from 'react';
-import { ArrowRight, CheckCircle2, Heart } from 'lucide-react';
+import React from 'react';
+import { ArrowRight, ShieldCheck } from 'lucide-react';
+import { scrollToTarget } from './Navbar';
 
 export const Hero: React.FC = () => {
   return (
-    <section id="home" className="relative pt-16 pb-16 md:pt-32 md:pb-32 overflow-hidden bg-gradient-to-b from-brand-light/30 to-white">
+    <section id="home" className="w-full min-h-screen relative flex flex-col justify-center overflow-hidden bg-[#030712] pt-24 pb-20">
       
-      <div className="hidden md:block absolute top-0 right-0 w-[500px] h-[500px] bg-blue-200/40 rounded-full blur-3xl -translate-y-1/2 translate-x-1/4 -z-10 will-change-transform" />
-      <div className="hidden md:block absolute bottom-0 left-0 w-[400px] h-[400px] bg-brand-light rounded-full blur-3xl translate-y-1/3 -translate-x-1/4 -z-10 will-change-transform" />
-
-      <div className="container mx-auto px-4 md:px-8">
-        <div className="flex flex-col items-center text-center max-w-4xl mx-auto">
-          
-          {/* Text Content */}
-          <div className="z-10">
-            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-[1.15] text-slate-900 mb-6 tracking-tight">
-              Cuidando da saúde dos Curitibanos a mais de <span className="text-brand-blue">18 anos</span>
-            </h1>
-            
-            <p className="text-base sm:text-lg text-slate-600 mb-8 leading-relaxed max-w-2xl mx-auto">
-              Plano de saúde individual, familiar e empresarial. Compare preços, coberturas e carências de todas as operadoras em um só lugar.
-            </p>
-
-            <div className="flex flex-col sm:flex-row gap-4 mb-8 justify-center">
-              <a
-                href="#quote"
-                onClick={(e) => {
-                  e.preventDefault();
-                  document.getElementById('quote')?.scrollIntoView({ behavior: 'smooth' });
-                }}
-                className="bg-brand-blue text-white px-8 py-4 rounded-xl font-bold text-lg shadow-xl shadow-blue-600/20 flex items-center justify-center gap-2 min-h-[56px] transition-transform hover:scale-105 active:scale-95"
-              >
-                Fazer Cotação
-                <ArrowRight size={20} />
-              </a>
-            </div>
-
-            <div className="flex flex-wrap gap-x-6 gap-y-2 text-sm text-slate-600 font-medium justify-center">
-                <span className="flex items-center gap-1.5"><CheckCircle2 size={18} className="text-brand-blue shrink-0"/> Cotação Gratuita</span>
-                <span className="flex items-center gap-1.5"><CheckCircle2 size={18} className="text-brand-blue shrink-0"/> Rápido e Fácil</span>
-            </div>
-          </div>
-
+      {/* Top Navbar */}
+      <header className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-7xl p-6 flex justify-between items-center z-50">
+        <div className="text-xl md:text-2xl font-bold text-white tracking-tight">
+          Unipam Saúde
         </div>
+        <button 
+          onClick={() => scrollToTarget('quote')} 
+          className="bg-white text-slate-900 px-5 py-2.5 rounded-full font-semibold text-sm hover:bg-cyan-50 transition-colors shadow-lg"
+        >
+          Fazer Cotação
+        </button>
+      </header>
+      
+      {/* Background Image from user */}
+      <div className="absolute inset-0 z-0 pointer-events-none select-none">
+        <img 
+          src="https://lh3.googleusercontent.com/d/1U9WT09ZFdnD8Qds8V-Nf_myDY2rHEGb2" 
+          alt="Hero Background" 
+          className="w-full h-full object-cover opacity-50" 
+          style={{ objectPosition: 'center 15%' }}
+        />
+        {/* Dark gradient overlay to blend bottom */}
+        <div className="absolute inset-0 bg-gradient-to-t from-[#030712] via-[#030712]/50 to-transparent" />
+      </div>
+      
+      <div className="container mx-auto px-4 relative z-10 text-center flex flex-col items-center">
+        
+        <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-cyan-500/30 bg-cyan-950/40 text-cyan-300 text-sm font-medium mb-8 backdrop-blur-md shadow-[0_0_20px_rgba(6,182,212,0.15)]">
+          <ShieldCheck size={16} />
+          Corretora Autorizada
+        </div>
+
+        <h1 className="text-4xl sm:text-5xl md:text-7xl font-bold tracking-tight mb-10 max-w-5xl text-white leading-[1.1]">
+          Cuidando da saúde dos Curitibanos a mais de <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-300 to-blue-500 drop-shadow-sm whitespace-nowrap">18 anos</span>
+        </h1>
+
+        <button 
+          onClick={() => scrollToTarget('quotes-start')}
+          className="bg-white text-slate-950 px-8 py-4 rounded-full font-bold text-lg hover:scale-105 transition-all flex items-center justify-center gap-3 border border-cyan-300 shadow-[0_0_15px_rgba(34,211,238,0.4)] hover:shadow-[0_0_25px_rgba(34,211,238,0.6)]"
+        >
+          Ver Últimas Cotações
+          <ArrowRight size={20} />
+        </button>
+
       </div>
     </section>
   );
