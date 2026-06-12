@@ -164,7 +164,7 @@ export const Quotes: React.FC = () => {
             {/* Background Glow specific to the card color */}
             <div className={`absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full max-w-lg blur-[100px] opacity-20 rounded-full bg-gradient-to-br ${theme.split('from-')[1]}`} />
 
-            <div className={`relative w-full max-w-md rounded-[2.5rem] p-8 border backdrop-blur-3xl transition-all duration-700 overflow-hidden ${theme.split('from-')[0]}`}>
+            <div className={`relative w-full max-w-md rounded-[2.5rem] p-8 border backdrop-blur-2xl transition-all duration-500 hover:-translate-y-2 hover:border-white/20 overflow-hidden group/card ${theme.split('from-')[0]}`}>
               
               {quote.bgImage && (
                 <>
@@ -218,10 +218,10 @@ export const Quotes: React.FC = () => {
 
               <button 
                 onClick={() => scrollToTarget('quote')}
-                className={`relative z-10 w-full py-4 rounded-full font-bold flex items-center justify-center gap-2 transition-all hover:scale-[1.02] active:scale-[0.98] ${btnTheme}`}
+                className={`relative z-10 w-full py-4 rounded-full font-bold flex items-center justify-center gap-2 transition-all hover:scale-[1.02] active:scale-[0.98] group-hover/card:shadow-xl ${btnTheme}`}
               >
                 Fazer a minha cotação
-                <ArrowRight size={18} />
+                <ArrowRight size={18} className="group-hover/card:translate-x-1 transition-transform" />
               </button>
 
               </div>

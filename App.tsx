@@ -13,7 +13,7 @@ function App() {
         <img 
           src="https://lh3.googleusercontent.com/d/1U9WT09ZFdnD8Qds8V-Nf_myDY2rHEGb2" 
           alt="Background" 
-          className="w-full h-full object-cover opacity-50" 
+          className="w-full h-full object-cover opacity-[0.35] blur-[2px] transition-all duration-1000 animate-in fade-in" 
           style={{ objectPosition: 'center 15%' }}
         />
         {/* Dark gradient overlay to blend bottom */}
