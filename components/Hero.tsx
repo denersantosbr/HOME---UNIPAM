@@ -19,14 +19,14 @@ export const Hero: React.FC = () => {
           setIsDeleting(false);
           setWordIndex((prev) => (prev + 1) % words.length);
         }
-      }, 50);
+      }, 30);
     } else {
       timeout = setTimeout(() => {
         setText(currentWord.substring(0, text.length + 1));
         if (text.length === currentWord.length) {
-          timeout = setTimeout(() => setIsDeleting(true), 2000);
+          timeout = setTimeout(() => setIsDeleting(true), 1200);
         }
-      }, 100);
+      }, 60);
     }
 
     return () => clearTimeout(timeout);
@@ -90,7 +90,7 @@ export const Hero: React.FC = () => {
           <span className="text-white/30">|</span>
           <span className="text-orange-400 drop-shadow-sm">Hapvida Clinipam</span>
           <span className="text-white/30">|</span>
-          <span className="text-[#8B4513] drop-shadow-sm">MedSênior</span>
+          <span className="text-green-300 drop-shadow-sm">MedSênior</span>
         </div>
 
       </div>

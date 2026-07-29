@@ -4,9 +4,12 @@ import { CheckCircle2, Send } from 'lucide-react';
 export const QuoteForm: React.FC = () => {
   const [formData, setFormData] = useState({
     name: '',
-    hasCnpj: '',
+    city: '',
     ages: '',
-    hasPlan: ''
+    hasCnpj: '',
+    hasPlan: '',
+    lookingFor: '',
+    priority: ''
   });
   const [isSubmitted, setIsSubmitted] = useState(false);
 
@@ -20,11 +23,14 @@ export const QuoteForm: React.FC = () => {
     const text = `Olá, gostaria de fazer uma cotação de plano de saúde.
     
 *Nome:* ${formData.name}
-*Possui CNPJ ou MEI:* ${formData.hasCnpj}
+*Cidade:* ${formData.city}
 *Idades:* ${formData.ages}
-*Já possui plano:* ${formData.hasPlan}`;
+*Possui CNPJ ou MEI:* ${formData.hasCnpj}
+*Já possui plano:* ${formData.hasPlan}
+*Estou Buscando:* ${formData.lookingFor}
+*Prioridade na contratação:* ${formData.priority}`;
 
-    const whatsappNumber = "554195898548";
+    const whatsappNumber = "554197217117";
     const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(text)}`;
     
     window.open(whatsappUrl, '_blank');
@@ -32,20 +38,17 @@ export const QuoteForm: React.FC = () => {
   };
 
   return (
-    <section id="quote" className="snap-section min-h-screen py-24 relative flex flex-col justify-center overflow-hidden">
+    <section id="quote" className="snap-section min-h-screen py-24 relative flex flex-col justify-center overflow-hidden flex-1">
       
       {/* Background glow for form */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[80%] h-[80%] max-w-4xl bg-cyan-900/10 blur-[120px] rounded-full pointer-events-none" />
 
-      <div className="container mx-auto px-4 md:px-8 relative z-10">
-        <div className="max-w-3xl mx-auto">
+      <div className="container mx-auto px-4 md:px-8 relative z-10 flex-1 flex flex-col justify-center">
+        <div className="max-w-4xl mx-auto w-full">
           <div className="text-center mb-12">
-            <h2 className="text-4xl md:text-5xl font-bold text-white mb-6 tracking-tight">
-              Solicite sua <span className="bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">Cotação</span>
+            <h2 className="text-3xl md:text-5xl font-bold text-white mb-6 tracking-tight">
+              Preencha as informações abaixo para receber uma <span className="bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">cotação completa</span> no seu whatsapp.
             </h2>
-            <p className="text-slate-400 text-lg">
-              Insira as informações abaixo
-            </p>
           </div>
 
           {isSubmitted ? (
@@ -73,18 +76,29 @@ export const QuoteForm: React.FC = () => {
             >
               <div className="grid md:grid-cols-2 gap-8 mb-8">
                 <div className="space-y-3">
-                  <label className="text-sm font-bold text-slate-300 ml-1">Nome Completo *</label>
+                  <label className="text-sm font-bold text-slate-300 ml-1">Nome *</label>
                   <input 
                     required
                     type="text" 
                     value={formData.name}
                     onChange={e => setFormData({...formData, name: e.target.value})}
                     className="w-full px-5 py-4 rounded-2xl bg-[#030712]/50 backdrop-blur-sm border border-slate-800 hover:border-slate-700 focus:bg-[#030712]/80 focus:border-cyan-500/50 focus:ring-1 focus:ring-cyan-500/50 text-white outline-none transition-all placeholder:text-slate-600 shadow-inner"
-                    placeholder="Seu nome"
+                    placeholder="Seu nome completo"
                   />
                 </div>
                 <div className="space-y-3">
-                  <label className="text-sm font-bold text-slate-300 ml-1">Idades das pessoas *</label>
+                  <label className="text-sm font-bold text-slate-300 ml-1">Cidade *</label>
+                  <input 
+                    required
+                    type="text" 
+                    value={formData.city}
+                    onChange={e => setFormData({...formData, city: e.target.value})}
+                    className="w-full px-5 py-4 rounded-2xl bg-[#030712]/50 backdrop-blur-sm border border-slate-800 hover:border-slate-700 focus:bg-[#030712]/80 focus:border-cyan-500/50 focus:ring-1 focus:ring-cyan-500/50 text-white outline-none transition-all placeholder:text-slate-600 shadow-inner"
+                    placeholder="Sua cidade"
+                  />
+                </div>
+                <div className="space-y-3 md:col-span-2">
+                  <label className="text-sm font-bold text-slate-300 ml-1">Idades (preencha as idades de quem entrará no plano) *</label>
                   <input 
                     required
                     type="text" 
@@ -96,9 +110,9 @@ export const QuoteForm: React.FC = () => {
                 </div>
               </div>
 
-              <div className="grid md:grid-cols-2 gap-8 mb-10">
-                <div className="space-y-3">
-                  <label className="text-sm font-bold text-slate-300 ml-1">Possui CNPJ ou MEI? *</label>
+              <div className="grid md:grid-cols-2 gap-8 mb-8">
+                <div className="space-y-4">
+                  <label className="text-sm font-bold text-slate-300 ml-1">Possui CNPJ ou MEI ativo? *</label>
                   <div className="flex gap-6 px-1">
                     <label className="flex items-center gap-3 cursor-pointer group">
                       <div className="relative flex items-center justify-center">
@@ -133,7 +147,7 @@ export const QuoteForm: React.FC = () => {
                   </div>
                 </div>
                 
-                <div className="space-y-3">
+                <div className="space-y-4">
                   <label className="text-sm font-bold text-slate-300 ml-1">Já possui plano de saúde? *</label>
                   <div className="flex gap-6 px-1">
                     <label className="flex items-center gap-3 cursor-pointer group">
@@ -170,9 +184,57 @@ export const QuoteForm: React.FC = () => {
                 </div>
               </div>
 
+              <div className="grid md:grid-cols-2 gap-8 mb-10">
+                <div className="space-y-4">
+                  <label className="text-sm font-bold text-slate-300 ml-1">Estou Buscando: *</label>
+                  <div className="flex flex-col gap-4 px-1">
+                    {['Mais em conta', 'Custo/benefício', 'Premium'].map((option) => (
+                      <label key={option} className="flex items-center gap-3 cursor-pointer group">
+                        <div className="relative flex items-center justify-center">
+                          <input 
+                            required
+                            type="radio" 
+                            name="lookingFor" 
+                            value={option}
+                            checked={formData.lookingFor === option}
+                            onChange={e => setFormData({...formData, lookingFor: e.target.value})}
+                            className="peer appearance-none w-6 h-6 rounded-full border border-slate-600 hover:border-slate-400 checked:border-cyan-500 bg-[#030712]/50 backdrop-blur-sm transition-all cursor-pointer shadow-inner shrink-0"
+                          />
+                          <div className="absolute w-3 h-3 rounded-full bg-cyan-500 opacity-0 peer-checked:opacity-100 transition-opacity"></div>
+                        </div>
+                        <span className="text-slate-300 group-hover:text-white transition-colors text-base md:text-lg">{option}</span>
+                      </label>
+                    ))}
+                  </div>
+                </div>
+
+                <div className="space-y-4">
+                  <label className="text-sm font-bold text-slate-300 ml-1">Prioridade na contratação: *</label>
+                  <div className="flex flex-col gap-4 px-1">
+                    {['Máxima', 'Estou Pesquisando', 'Só Curiosidade'].map((option) => (
+                      <label key={option} className="flex items-center gap-3 cursor-pointer group">
+                        <div className="relative flex items-center justify-center">
+                          <input 
+                            required
+                            type="radio" 
+                            name="priority" 
+                            value={option}
+                            checked={formData.priority === option}
+                            onChange={e => setFormData({...formData, priority: e.target.value})}
+                            className="peer appearance-none w-6 h-6 rounded-full border border-slate-600 hover:border-slate-400 checked:border-cyan-500 bg-[#030712]/50 backdrop-blur-sm transition-all cursor-pointer shadow-inner shrink-0"
+                          />
+                          <div className="absolute w-3 h-3 rounded-full bg-cyan-500 opacity-0 peer-checked:opacity-100 transition-opacity"></div>
+                        </div>
+                        <span className="text-slate-300 group-hover:text-white transition-colors text-base md:text-lg">{option}</span>
+                      </label>
+                    ))}
+                  </div>
+                </div>
+              </div>
+
               <button 
                 type="submit"
-                className="group w-full bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-bold py-5 rounded-2xl shadow-[0_0_30px_rgba(34,211,238,0.3)] transition-all flex items-center justify-center gap-3 text-lg mt-4 hover:scale-[1.02] active:scale-[0.98]"
+                className="group w-full bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-bold py-5 rounded-2xl shadow-[0_0_30px_rgba(34,211,238,0.3)] transition-all flex items-center justify-center gap-3 text-lg mt-6 hover:scale-[1.02] active:scale-[0.98]"
               >
                 <Send size={22} className="text-slate-900 group-hover:-translate-y-1 group-hover:translate-x-1 transition-transform" />
                 Receber Cotação

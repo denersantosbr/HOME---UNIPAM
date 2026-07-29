@@ -100,7 +100,7 @@ const quotes = [
     prices: [
       { age: 'Unimed', value: 'R$ 327,88', color: 'text-emerald-400 font-bold' },
       { age: 'Select', value: 'R$ 314,00', color: 'text-purple-400 font-bold' },
-      { age: 'Hapvida', value: 'R$ 191,91', color: 'text-orange-400 font-bold' },
+      { age: 'Hapvida', value: 'R$ 208,65', color: 'text-orange-400 font-bold' },
       { age: 'Nossa Saúde', value: 'R$ 173,05', color: 'text-cyan-400 font-bold' },
     ],
     total: '',

@@ -1,7 +1,4 @@
 import React from 'react';
-import { Navbar } from './components/Navbar';
-import { Hero } from './components/Hero';
-import { Quotes } from './components/Quotes';
 import { QuoteForm } from './components/QuoteForm';
 import { Footer } from './components/Footer';
 
@@ -20,10 +17,7 @@ function App() {
         <div className="absolute inset-0 bg-gradient-to-t from-[#030712] via-[#030712]/80 to-transparent" />
       </div>
 
-      <div className="relative z-10 w-full">
-        <Navbar />
-        <Hero />
-        <Quotes />
+      <div className="relative z-10 w-full flex flex-col justify-between min-h-screen">
         <QuoteForm />
         <Footer />
       </div>
