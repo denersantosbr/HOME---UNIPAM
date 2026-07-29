@@ -20,7 +20,7 @@ export const QuoteForm: React.FC = () => {
       (window as any).fbq('track', 'Lead');
     }
 
-    const text = `Olá, gostaria de fazer uma cotação de plano de saúde.
+    const text = `Oi, preenchi o formulário no site. Gostaria de fazer uma cotação de plano de saúde.
     
 *Nome:* ${formData.name}
 *Cidade:* ${formData.city}
