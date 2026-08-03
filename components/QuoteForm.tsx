@@ -14,18 +14,16 @@ export const QuoteForm: React.FC = () => {
   });
   const [isSubmitted, setIsSubmitted] = useState(false);
 
-  useEffect(() => {
-    if (isSubmitted && typeof window !== 'undefined' && (window as any).fbq) {
-      (window as any).fbq('track', 'Lead');
-    }
-  }, [isSubmitted]);
-
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     
     if (step < 5) {
       setStep(step + 1);
       return;
+    }
+
+    if (typeof window !== 'undefined' && (window as any).fbq) {
+      (window as any).fbq('track', 'Lead');
     }
 
     const agesText = formData.isLargeCompany ? 'Empresa com mais de 10 colaboradores' : formData.ages;
@@ -42,8 +40,11 @@ export const QuoteForm: React.FC = () => {
     const whatsappNumber = "554197217117";
     const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(text)}`;
     
-    window.open(whatsappUrl, '_blank');
     setIsSubmitted(true);
+    
+    setTimeout(() => {
+      window.open(whatsappUrl, '_blank');
+    }, 100);
   };
 
   const handleRadioSelect = (field: string, value: string) => {
