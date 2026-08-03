@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { CheckCircle2, Send, ArrowRight, ArrowLeft } from 'lucide-react';
 
 export const QuoteForm: React.FC = () => {
@@ -14,16 +14,18 @@ export const QuoteForm: React.FC = () => {
   });
   const [isSubmitted, setIsSubmitted] = useState(false);
 
+  useEffect(() => {
+    if (isSubmitted && typeof window !== 'undefined' && (window as any).fbq) {
+      (window as any).fbq('track', 'Lead');
+    }
+  }, [isSubmitted]);
+
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     
     if (step < 5) {
       setStep(step + 1);
       return;
-    }
-
-    if (typeof window !== 'undefined' && (window as any).fbq) {
-      (window as any).fbq('track', 'Lead');
     }
 
     const agesText = formData.isLargeCompany ? 'Empresa com mais de 10 colaboradores' : formData.ages;
