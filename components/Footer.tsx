@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Instagram, MapPin, Phone, Mail, ArrowUp, X } from 'lucide-react';
+import { Instagram, MapPin, Phone, Mail, ArrowUp, X, Youtube } from 'lucide-react';
 
 type ModalType = 'privacy' | 'terms' | 'lgpd' | null;
 
@@ -58,6 +58,15 @@ export const Footer: React.FC = () => {
                   <path d="M12.525.02c1.31-.02 2.61-.01 3.91.04.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.12-3.44-3.17-3.64-5.46-.22-2.18.66-4.39 2.29-5.75 1.76-1.44 4.2-1.89 6.32-1.22v4.13c-1.1-.38-2.39-.23-3.32.48-.96.69-1.42 1.93-1.18 3.09.24 1.16 1.25 2.1 2.45 2.22 1.53.16 3.03-.83 3.32-2.35.09-.5.06-1.02.06-1.53V.02z" />
                 </svg>
               </a>
+              <a 
+                href="https://www.youtube.com/@unipamsaude" 
+                target="_blank" 
+                rel="noreferrer"
+                className="w-12 h-12 rounded-full border border-slate-800 bg-slate-900/50 flex items-center justify-center hover:bg-cyan-500 hover:border-cyan-500 hover:text-white transition-all text-slate-300"
+                aria-label="YouTube"
+              >
+                <Youtube size={24} />
+              </a>
             </div>
           </div>
 
@@ -87,9 +96,9 @@ export const Footer: React.FC = () => {
                     <Phone className="text-cyan-500 shrink-0" size={24} />
                     <span className="text-lg">(41) 3011-5389</span>
                 </a>
-                <a href="tel:554197217117" className="flex items-center gap-4 hover:text-white transition-colors py-2">
+                <a href="tel:554195898548" className="flex items-center gap-4 hover:text-white transition-colors py-2">
                     <Phone className="text-cyan-500 shrink-0" size={24} />
-                    <span className="text-lg">(41) 9721-7117</span>
+                    <span className="text-lg">(41) 9589-8548</span>
                 </a>
             </div>
           </div>

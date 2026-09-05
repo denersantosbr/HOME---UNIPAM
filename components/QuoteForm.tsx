@@ -37,7 +37,7 @@ export const QuoteForm: React.FC = () => {
 *Já possui plano:* ${formData.hasPlan}
 *Estou Buscando:* ${formData.lookingFor}`;
 
-    const whatsappNumber = "554197217117";
+    const whatsappNumber = "554195898548";
     const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(text)}`;
     
     setIsSubmitted(true);
