@@ -63,12 +63,9 @@ export const QuoteForm: React.FC = () => {
       <div className="container mx-auto px-4 md:px-8 relative z-10 flex-1 flex flex-col justify-center">
         <div className="max-w-3xl mx-auto w-full">
           <div className="text-center mb-10">
-            <h2 className="text-3xl md:text-5xl font-bold text-white mb-4 tracking-tight">
-              Cotação rápida via <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-500">WhatsApp</span>
-            </h2>
-            <p className="text-slate-400 text-lg md:text-xl font-medium">
-              Descubra o plano ideal em poucos segundos.
-            </p>
+            <h1 className="text-3xl md:text-5xl font-bold text-white tracking-tight">
+              Descubra o <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-500">plano de saúde ideal</span> em poucos segundos.
+            </h1>
           </div>
 
           {isSubmitted ? (
